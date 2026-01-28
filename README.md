@@ -235,7 +235,7 @@ The letter grade earned by a student will be *at least* what is described in the
 
 Emails to the instructor must be from a student's CUNY Hunter College email address to the email address [teaching@recursion.ninja][email].
 
-> **You must *include the class number* `CSCI-499` in the subject line of the email!**
+> **You must *include the class number* `CSCI-39531` in the subject line of the email!**
 
 
 ## Academic Violations
