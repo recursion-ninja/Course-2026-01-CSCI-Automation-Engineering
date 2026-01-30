@@ -1,0 +1,145 @@
+\documentclass{ProblemSetCUNY}
+\usepackage{bussproofs} \EnableBpAbbreviations
+\usepackage{mathrsfs}
+\usepackage{stix}
+\usepackage{pgffor}
+\usepackage{listings}
+
+\usepackage{tabstackengine}
+\TABstackMath
+\TABbinary
+
+\AssignmentNumber{1}%
+\CourseName{Automation Engineering}
+\CourseNumber{39531}
+\InstructorName{Alex Washburn}
+\DueDateYear{2026}
+\DueDateMonth{02}
+\DueDateDay{06}
+
+
+%\newenvironment{\ContactListing}[args]{begdef}{enddef}
+
+\newcommand{\ProofLabelOne}[1]{\RightLabel{\ensuremath{\Parens{\mathrm{\textsc{#1}}}}\xspace}}
+\newcommand{\ProofLabelTwo}[2]{\RightLabel{\ensuremath{\Parens{\mathrm{\textsc{#1}}}\Parens{\mathrm{#2}}}\xspace}}
+
+\newcommand{\LogicCase}[1]{\item \textbf{Case}~#1:\newline}
+
+\newcommand{\DerivationFormat}[2]{\hfill\qquad#2\textsc{#1}}
+\newcommand{\Derivation}[2]{\DerivationFormat{#1}{#2~\ensuremath{\ruledelayed}~}}
+
+\newcommand{\AxiomCL}[1]{\DerivationFormat{Axiom~#1}{}}
+\newcommand{\Factivity}{\DerivationFormat{Factivity}{}}
+\newcommand{\Given}{\DerivationFormat{Hypothesis}{}}
+\newcommand{\Contrapositive}{\DerivationFormat{Contrapositive}{}}
+\newcommand{\DoubleNegation}{\DerivationFormat{Double Negation}{}}
+\newcommand{\DeMorgans}{\DerivationFormat{DeMorgans}{}}
+\newcommand{\Necitation}[1]{\Derivation{Necitation}{#1}}
+\newcommand{\Distribution}[1]{\Derivation{Distribution}{#1}}
+\newcommand{\Reflexivity}[1]{\Derivation{Reflexivity}{#1}}
+\newcommand{\ConDef}[1]{\Derivation{Connective Definition}{#1}}
+\newcommand{\Contradiction}[1]{\ensuremath{\neg \phi \land \phi}\Derivation{Contradiction}{\ensuremath{\phi = #1}}}
+\newcommand{\DedThm}[1]{\Derivation{Deduction Theorem}{#1}}
+\newcommand{\ModPon}[2]{\Derivation{Modus Ponens}{#1, #2}}
+\newcommand{\Syllogism}[2]{\Derivation{Syllogism}{#1, #2}}
+\newcommand{\Theorem}[2]{\DerivationFormat{Theorem~--~Lecture~#1,~Page~#2}{}}
+
+\newcommand{\R}[2]{\ensuremath{\World{#1}\mathrel{R}\World{#2}}\xspace}
+\newcommand{\Tr}[2]{\ensuremath{\tau\Parens{#1,\,#2}\xspace}}
+\newcommand{\T}[1]{\ensuremath{\tau\Parens{#1}\xspace}}
+\newcommand{\Prob}[1]{\ensuremath{P\Parens{#1}}\xspace}
+\newcommand{\ProbGiven}[2]{\ensuremath{P\Parens{#1~\,|\,~#2}}\xspace}
+\newcommand{\RandVar}[1]{\ensuremath{\mathbf{#1}}\xspace}
+\newcommand{\DistMap}[2]{~#1&\mapsto~~#2\\}
+\newcommand{\DistCondition}[2]{~#1&\text{\normalfont iff}~~#2\\}
+
+
+\newcommand{\One}{\ensuremath{\textbf{1}}\xspace}
+
+\newcommand{\Countermodel}[4]{%
+\textbf{Countermodel} $\mathcal{K}$ in #1:%
+\begin{itemize}%
+\item \ensuremath{W = \SetNote{\World{0}%
+\foreach \n in {1,...,#2}{,~\World{\n}}%
+}}%
+\item \ensuremath{\mathrel{R}~=~#3}%
+\item #4%
+\end{itemize}%
+}
+
+\newcommand{\Cons}{%
+\mathrel{:\!:}%
+}
+
+\newcommand{\ProblemItem}[1]{%
+\hspace{\parindent}\textbullet\;\;#1%
+}
+
+\begin{document}
+\CoverPage%
+
+
+\Problem{%
+Rick O'Shea asks for your help automating a task.
+They walk you through thier workflow:\\[5mm]
+\ProblemItem{Rick O'Shea goes to a webpage and gets \emph{five} numbers from the web page contents.}\\
+\ProblemItem{Then Rick O'Shea takes these numbers and places them in five cells of a LibreOffice spreadsheet.}\\
+\ProblemItem{Rick O'Shea quickly copies the contents of a sixth cell in the spreadsheet whose contents were update by some unseen formula using the values in the five other cells.}\\
+\ProblemItem{Rick O'Shea finally pastes the copied value into a field of the GnuCash accounting software they have open.}\\[5mm]
+Rick O'Shea looks at you and says, the process seems simple enough, but I have to do this for 73 different sites each week.
+It is so boring and sometimes I have to take a break because my wrist starts hurting.\\[5mm]
+\textit{Help Rick O'Shea by modeling thier workflow using functions. Write the name and type signature of each function you use. The function name should describe what the function's implementation does, but you do not need to write any code to implement the functions. Compose the functions together to define a process to automate the workflow for a single website.}\\
+}%
+
+\Problem{%
+Ella Vayter wrote a very cool function:
+\begin{align*}
+\mathtt{going\_up} &\colon \mathbb{N} \rightarrow \mathbb{N} \rightarrow \mathbb{N} \rightarrow \mathbb{Q}\\
+\mathtt{going\_up} &\Parens{ x,\,y,\,z } = \Parens{ \min\Parens{ x,\, y} + \min\Parens{ x,\, z } + \max\Parens{ y,\, z } } / x
+\end{align*}
+Unfortunately, Ella Vayter is having trouble understanding how the function behaves when it is paritally applied to arguments.\\[5mm]
+\textit{Help Ella Vayter learn about $\mathtt{going\_up}$ by answering these questions:}
+\textit{(Simplify expressions wherever possible)}
+}
+\SubProblem{What is the \emph{type} and \emph{value} of $\mathtt{going\_up}\Parens{ 4 }$}
+\vfill
+\SubProblem{What is the \emph{type} and \emph{value} of $\mathtt{going\_up}\Parens{ 4,\, 2 }$}
+\vfill
+\SubProblem{What is the \emph{type} and \emph{value} of $\mathtt{going\_up}\Parens{ 4,\, 2,\, 3 }$}
+\vfill
+\SubProblem{What is the \emph{type} and \emph{value} of $\mathtt{going\_up}\Parens{ 0 }$}
+\vfill
+
+
+\Problem{%
+Anne Chovie shows you a new library they made for the $\mathtt{List}$ type:
+\begin{equation*}
+\mathtt{List}\;\alpha \Coloneq \begin{cases}
+\mathtt{Nil}\\
+\alpha \Cons \mathtt{List}\;\alpha
+\end{cases}
+\end{equation*}\\[5mm]
+The library contains these functions:\\[5mm]
+\ProblemItem{$\mathtt{first}      \colon \mathtt{List}\;\alpha \rightarrow \alpha$}\\
+\ProblemItem{$\mathtt{group}      \colon \mathtt{List}\;\alpha \rightarrow \mathtt{List}\;\Parens{\mathtt{List}\;\alpha}$}\\
+\ProblemItem{$\mathtt{join}\;\;   \colon \mathtt{List}\;\Parens{\mathtt{List}\;\alpha} \rightarrow \mathtt{List}\;\alpha$}\\
+\ProblemItem{$\mathtt{last}\;\;   \colon \mathtt{List}\;\alpha \rightarrow \alpha$}\\
+\ProblemItem{$\mathtt{map}\;\;\;\;\colon \Parens{\mathtt{List}\;\alpha \rightarrow \alpha} \rightarrow \mathtt{List}\;\alpha \rightarrow \mathtt{List}\;\alpha$}\\
+\ProblemItem{$\mathtt{max}\;\;\;\;\colon \mathtt{List}\;\alpha \rightarrow \alpha$}\\
+\ProblemItem{$\mathtt{min}\;\;\;\;\colon \mathtt{List}\;\alpha \rightarrow \alpha$}\\
+\ProblemItem{$\mathtt{size}\;\;   \colon \mathtt{List}\;\alpha \rightarrow \mathbb{N}$}\\%
+\ProblemItem{$\mathtt{sort}\;\;   \colon \mathtt{List}\;\alpha \rightarrow \mathtt{List}\;\alpha$}\\[5mm]
+Anne Chovie wants to implement a new function $\mathtt{deduplicate}$, but they cannot figure out how to implement the function with the type signature:
+\begin{equation*}
+\mathtt{deduplicate} \colon \mathtt{List}\;\alpha \rightarrow \mathtt{List}\;\alpha
+\end{equation*}\\[5mm]
+Anne Chovie describes that $\mathtt{deduplicate}$ should behave as follows:
+\ProblemItem{$\mathtt{deduplicate}\Parens{ \phantom{0 \Cons 0 \Cons 0 \Cons\;} \mathtt{Nil} } = \mathtt{Nil}$}\\
+\ProblemItem{$\mathtt{deduplicate}\Parens{ \phantom{0 \Cons\;} 1 \Cons 1 \Cons \mathtt{Nil} } = 1 \Cons \mathtt{Nil}$}\\
+\ProblemItem{$\mathtt{deduplicate}\Parens{ 3 \Cons 3 \Cons 3 \Cons \mathtt{Nil} } = 3 \Cons \mathtt{Nil}$}\\
+\ProblemItem{$\mathtt{deduplicate}\Parens{ 2 \Cons 1 \Cons 2 \Cons \mathtt{Nil} } = 2 \Cons 1 \Cons \mathtt{Nil}$}\\
+\ProblemItem{$\mathtt{deduplicate}\Parens{ 3 \Cons 2 \Cons 1 \Cons \mathtt{Nil} } = 3 \Cons 2 \Cons 1 \Cons \mathtt{Nil}$}\\[5mm]
+\textit{To help Anne Chovie complete thier library, implement the $\mathtt{deduplicate}$ function by composing together \underline{some} of the existing functions shown in Anne Chovie's library.}
+}
+
+\end{document}
