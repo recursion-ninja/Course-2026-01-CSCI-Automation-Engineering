@@ -41,7 +41,7 @@ $\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R}$
 
 - "Íthglir tiriel i vîr sílaí"
 
-Somtime denoted as $Sigma$
+Sometimes denoted as $\Sigma$
 
 
 ## Logic
@@ -61,7 +61,7 @@ Example value: ("Alex", 32.8)
 
 ## Cases
 
-Animal = Mammal | Insect | Fish | Anphibian | Reptile | Dinosaur
+Animal = Mammal | Insect | Fish | Amphibian | Reptile | Dinosaur
 
 Toy = Gizmo | Gadget | Doohicky
 
@@ -106,11 +106,11 @@ $$ \mathtt{process_1} \circ \mathtt{process_0} $$
 
 $$\mathtt{grind\_flour} : \mathtt{grain} \rightarrow \mathtt{meal}$$
 
-$$\mathtt{seive\_flour} : \mathtt{meal} \rightarrow \mathtt{flour}$$
+$$\mathtt{sieve\_flour} : \mathtt{meal} \rightarrow \mathtt{flour}$$
 
 Since $\mathtt{meal} = \mathtt{meal}$
 
-$$ \mathtt{create\_flour} = \mathtt{seive\_flour} \circ \mathtt{grind\_flour} $$
+$$ \mathtt{create\_flour} = \mathtt{sieve\_flour} \circ \mathtt{grind\_flour} $$
 
 ---
 

@@ -183,6 +183,7 @@ number-mode=text
 
 % Groupings
 \newcommand{\Brackets}[1]{\ensuremath{\left[\;#1\;\right]}\xspace}
+\newcommand{\Tuple}[1]{\ensuremath{\left\langle\;#1\;\right\rangle}\xspace}
 \newcommand{\Parens}[1]{\ensuremath{\left(\;#1\;\right)}\xspace}
 \newcommand{\SetNote}[1]{\ensuremath{\left\{\;#1\;\right\}}\xspace}
 \newcommand{\IndexRange}[2]{\ensuremath{\texttt{{[}\,#1,\ #2\,{]}}}\xspace}
