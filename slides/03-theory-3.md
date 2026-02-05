@@ -57,7 +57,7 @@ A **Fold** takes:
 ---
 
 
-$$\mathtt{fold} \colon \Parens{\alpha \rightarrow \mathtt{acc} \rightarrow \mathtt{acc}} \rightarrow \mathtt{acc} \rightarrow \mathtt{List}\;\alpha \rightarrow acc$$
+$$\mathtt{fold} \colon \Parens{\alpha \rightarrow \mathtt{acc} \rightarrow \mathtt{acc}} \rightarrow \mathtt{acc} \rightarrow \mathtt{List}\;\alpha \rightarrow \mathtt{acc}$$
 
 
 - `acc`: the accumulator (what we’re building)
@@ -78,12 +78,13 @@ $$\mathtt{fold} \colon \Parens{\alpha \rightarrow \mathtt{acc} \rightarrow \math
 step : ℕ → ℕ
 step x acc = x + acc
 
-fold step 0 [1,2,3,4] = ...
-  = fold step (step 2 (step 1 0)) [2,3,4]
-  = fold step (step 3 (step 2 (step 1 0))) [4]
-  = fold step (step 4 (step 3 (step 2 (step 1 0)))) []
-  = step 4 (step 3 (step 2 (step 1 0)))
-  = 10
+= fold step 0 [1,2,3,4]
+= fold step (step 1 0) [2,3,4]
+= fold step (step 2 (step 1 0)) [3,4]
+= fold step (step 3 (step 2 (step 1 0))) [4]
+= fold step (step 4 (step 3 (step 2 (step 1 0)))) []
+= step 4 (step 3 (step 2 (step 1 0)))
+= 10
 ```
 
 ---
@@ -111,8 +112,7 @@ class Foldable t where
 ```
 
 - Mapping Correspondance
-
-$$\mathtt{foldMap} f \equiv \mathtt{fold} \circ \mathtt{fmap} f$$
+  $$\mathtt{foldMap}\;f \equiv \mathtt{fold} \Parens{\lambda x\;\;\mathtt{acc} \rightarrow x \oplus \mathtt{acc}} \mathtt{zed} \circ \mathtt{fmap}\;f$$
 
 
 ---
@@ -138,14 +138,14 @@ type BalanceChanges = Map User Amount
 
 "Real world" Example #1
 
-$$\mathtt{updates} \colon \mathtt{Foldable} t\; \Rightarrow\; t \mathtt{Transaction} \rightarrow \mathtt{BalanceChanges}$$
+$$\mathtt{updates} \colon \mathtt{Foldable}\; t \Rightarrow t\; \mathtt{Transaction} \rightarrow \mathtt{BalanceChanges}$$
 
 ```
 step : Transaction → BalanceChanges → BalanceChanges
-step (Transaction u a) balances =
-  Map.insertWith (+) u a balances
+step(x, balances) =
+  Map.insertWith (+) (user x) (ammount x) balances
 
-updates : [Transaction] → BalanceChanges → BalanceChanges
+updates : List Transaction → BalanceChanges → BalanceChanges
 updates = fold step Map.empty
 ```
 
@@ -186,17 +186,17 @@ normalize(str) =
 $$\mathtt{wordFrequencies} \colon \mathtt{String} \rightarrow \mathtt{WordFrequencies}$$
 
 ```
-words : String → [String]
+words : String → List String
 words(str) =
-  fold step [] str
+  fold step Nil str
   where
-    step : Char → [String] → [String]
-    step c acc
+    step : Char → List String → List String
+    step(c, acc)
       | c == ' '  = acc
       | otherwise =
           case acc of
-            []       → [[c]]
-            (w : ws) → (c : w) : ws
+            Nil     → (c :: Nil) :: Nil
+            w :: ws → (c ::   w) :: ws
 ```
 
 
