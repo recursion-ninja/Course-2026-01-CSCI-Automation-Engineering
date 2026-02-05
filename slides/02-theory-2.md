@@ -189,7 +189,7 @@ $$\mathtt{oneMore} = \mathtt{fmap}\quad\Parens{\lambda x \rightarrow x + 1}$$
 ## Functor laws
 
 - Identity:
-  $$\mathtt{fmap} \mathtt{id} == \mathtt{id}$$
+  $$\mathtt{fmap}\;\mathtt{id} == \mathtt{id}$$
 - Composition
   $$\mathtt{fmap}\;f \circ \mathtt{fmap}\;g \equiv \mathtt{fmap}\;\Parens{f \circ g}$$
 
