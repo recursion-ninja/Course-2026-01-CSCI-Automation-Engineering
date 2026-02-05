@@ -124,7 +124,7 @@ The library contains these functions:\\[5mm]
 \ProblemItem{$\mathtt{group}      \colon \mathtt{List}\;\alpha \rightarrow \mathtt{List}\;\Parens{\mathtt{List}\;\alpha}$}\\
 \ProblemItem{$\mathtt{join}\;\;   \colon \mathtt{List}\;\Parens{\mathtt{List}\;\alpha} \rightarrow \mathtt{List}\;\alpha$}\\
 \ProblemItem{$\mathtt{last}\;\;   \colon \mathtt{List}\;\alpha \rightarrow \alpha$}\\
-\ProblemItem{$\mathtt{map}\;\;\;\;\colon \Parens{\mathtt{List}\;\alpha \rightarrow \alpha} \rightarrow \mathtt{List}\;\alpha \rightarrow \mathtt{List}\;\alpha$}\\
+\ProblemItem{$\mathtt{map}\;\;\;\;\colon \Parens{\alpha \rightarrow \beta} \rightarrow \mathtt{List}\;\alpha \rightarrow \mathtt{List}\;\beta$}\\
 \ProblemItem{$\mathtt{max}\;\;\;\;\colon \mathtt{List}\;\alpha \rightarrow \alpha$}\\
 \ProblemItem{$\mathtt{min}\;\;\;\;\colon \mathtt{List}\;\alpha \rightarrow \alpha$}\\
 \ProblemItem{$\mathtt{size}\;\;   \colon \mathtt{List}\;\alpha \rightarrow \mathbb{N}$}\\%
@@ -138,7 +138,7 @@ Anne Chovie describes that $\mathtt{deduplicate}$ should behave as follows:
 \ProblemItem{$\mathtt{deduplicate}\Parens{ \phantom{0 \Cons\;} 1 \Cons 1 \Cons \mathtt{Nil} } = 1 \Cons \mathtt{Nil}$}\\
 \ProblemItem{$\mathtt{deduplicate}\Parens{ 3 \Cons 3 \Cons 3 \Cons \mathtt{Nil} } = 3 \Cons \mathtt{Nil}$}\\
 \ProblemItem{$\mathtt{deduplicate}\Parens{ 2 \Cons 1 \Cons 2 \Cons \mathtt{Nil} } = 2 \Cons 1 \Cons \mathtt{Nil}$}\\
-\ProblemItem{$\mathtt{deduplicate}\Parens{ 3 \Cons 2 \Cons 1 \Cons \mathtt{Nil} } = 3 \Cons 2 \Cons 1 \Cons \mathtt{Nil}$}\\[5mm]
+\ProblemItem{$\mathtt{deduplicate}\Parens{ 3 \Cons 1 \Cons 2 \Cons \mathtt{Nil} } = 3 \Cons 1 \Cons 2 \Cons \mathtt{Nil}$}\\[5mm]
 \textit{To help Anne Chovie complete thier library, implement the $\mathtt{deduplicate}$ function by composing together \underline{some} of the existing functions shown in Anne Chovie's library.}
 }
 
