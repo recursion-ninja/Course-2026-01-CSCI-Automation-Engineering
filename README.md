@@ -127,7 +127,7 @@ The practicum should demonstrate the application of the process automation topic
 |    01/26    |     01/28      | Introduction, Syllabus      | Theory № 1   |
 |    02/02    |     02/04      | Theory № 4                  | Theory № 3   |
 |    02/09    |     02/11      | Theory № 4                  | Theory № 5   | 
-|    -----    |     02/28      |                             | Midterm Exam |
+|    -----    |     02/18      |                             | Midterm Exam |
 |    02/23    |     02/25      | Data transformation         | Data Input (CLI & GUI)  |
 |    03/02    |     03/04      | Daemonization               | Debugging & Logging     |
 |    03/09    |     03/11      | Subscription Processing     | Web APIs (REST)         |
@@ -146,20 +146,20 @@ The practicum should demonstrate the application of the process automation topic
 
 Assignments are due at **`11:59PM`** (midnight) on the date specified below.
 
-| **Date**    | **Day**          | **Assignment**                     |
-|:-----------:|:-----------------|:-----------------------------------|
-|    02/03    |     Tuesday      | Homework № 1                       |
-|    02/10    |     Tuesday      | Homework № 2                       |
-|    02/17    |     Tuesday      | Homework № 3                       |
-|    02/24    |     Tuesday      | Midterm Exam                       |
-|    03/10    |     Tuesday      | Program  № 1                       |
-|    03/10    |     Tuesday      | Program  № 2                       |
-|    03/17    |     Tuesday      | Program  № 3                       |
-|    03/24    |     Tuesday      | Program  № 4                       |
-|    03/31    |     Tuesday      | Program  № 5                       |
-|    03/31    |     Tuesday      | Practicum Proposal                 |
-|    05/14    |     Tuesday      | Practicum Presentation             |
-|    05/14    |     Tuesday      | Practicum Project                  |
+| **Date**    | **Day**           | **Assignment**                     |
+|:-----------:|:------------------|:-----------------------------------|
+|    02/06    |     Friday        | Homework № 1                       |
+|    02/11    |     Wednesday     | Homework № 2                       |
+|    02/18    |     Wednesday     | Homework № 3                       |
+|    02/25    |     Wednesday     | Midterm Exam                       |
+|    03/11    |     Wednesday     | Program  № 1                       |
+|    03/11    |     Wednesday     | Program  № 2                       |
+|    03/18    |     Wednesday     | Program  № 3                       |
+|    03/25    |     Wednesday     | Program  № 4                       |
+|    04/01    |     Wednesday     | Program  № 5                       |
+|    04/01    |     Wednesday     | Practicum Proposal                 |
+|    05/15    |     Wednesday     | Practicum Presentation             |
+|    05/15    |     Wednesday     | Practicum Project                  |
 
 
 # Assignments
