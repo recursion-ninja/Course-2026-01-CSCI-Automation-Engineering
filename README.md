@@ -150,8 +150,8 @@ Assignments are due at **`11:59PM`** (midnight) on the date specified below.
 |:-----------:|:------------------|:-----------------------------------|
 |    02/06    |     Friday        | Homework № 1                       |
 |    02/11    |     Wednesday     | Homework № 2                       |
-|    02/18    |     Wednesday     | Homework № 3                       |
-|    02/25    |     Wednesday     | Midterm Exam                       |
+|    02/25    |     Wednesday     | Homework № 3                       |
+|    02/27    |     Friday        | Midterm Exam                       |
 |    03/11    |     Wednesday     | Program  № 1                       |
 |    03/18    |     Wednesday     | Program  № 2                       |
 |    03/25    |     Wednesday     | Program  № 3                       |
