@@ -127,19 +127,19 @@ The practicum should demonstrate the application of the process automation topic
 |    01/26    |     01/28      | Introduction, Syllabus      | Theory № 1   |
 |    02/02    |     02/04      | Theory № 4                  | Theory № 3   |
 |    02/09    |     02/11      | Theory № 4                  | Theory № 5   | 
-|    -----    |     02/18      |                             | Midterm Exam |
-|    02/23    |     02/25      | Data transformation         | Data Input (CLI & GUI)  |
-|    03/02    |     03/04      | Daemonization               | Debugging & Logging     |
-|    03/09    |     03/11      | Subscription Processing     | Web APIs (REST)         |
-|    03/16    |     03/18      | Web Scraping                | Web Submissions | 
-|    03/23    |     03/25      | Practicum Presentations № 1 | Web Debugging/Fuzzing/Probing |
-|    03/30    |     -----      | Practicum Presentations № 2 | 
+|    -----    |     02/18      |                             | N/A          |
+|    02/23    |     02/25      | Documentation               | Midterm Exam |
+|    03/02    |     03/04      | Data transformation         | Data Input (CLI & GUI)  | 
+|    03/09    |     03/11      | Daemonization               | Debugging & Logging     |
+|    03/16    |     03/18      | Subscription Processing     | Web APIs (REST)         |
+|    03/23    |     03/25      | Web Scraping                | Web Submissions |
+|    03/30    |     -----      | Web Debugging/Fuzzing/Probing | 
 |    -----    |     -----      |                             | 
-|    04/13    |     04/15      | Practicum Presentations № 3 | Processes (Sniping)  |
-|    04/20    |     04/22      | Practicum Presentations № 4 | Processes (Bots)  |
-|    04/27    |     04/29      | Practicum Presentations № 5 | Documentation | 
-|    05/04    |     05/06      | Practicum Presentations № 6 | Designing Workflows |
-|    05/11    |     05/13      | Practicum Presentations № 7 | Practicum Presentations № 8 |
+|    04/13    |     04/15      | Practicum Presentations № 1 | Processes (Sniping)  |
+|    04/20    |     04/22      | Practicum Presentations № 2 | Processes (Bots)  |
+|    04/27    |     04/29      | Practicum Presentations № 3 | Documentation | 
+|    05/04    |     05/06      | Practicum Presentations № 4 | Designing Workflows |
+|    05/11    |     05/13      | Practicum Presentations № 5 | Practicum Presentations № 6 |
 
 
 ## Due Dates
@@ -153,10 +153,9 @@ Assignments are due at **`11:59PM`** (midnight) on the date specified below.
 |    02/18    |     Wednesday     | Homework № 3                       |
 |    02/25    |     Wednesday     | Midterm Exam                       |
 |    03/11    |     Wednesday     | Program  № 1                       |
-|    03/11    |     Wednesday     | Program  № 2                       |
-|    03/18    |     Wednesday     | Program  № 3                       |
-|    03/25    |     Wednesday     | Program  № 4                       |
-|    04/01    |     Wednesday     | Program  № 5                       |
+|    03/18    |     Wednesday     | Program  № 2                       |
+|    03/25    |     Wednesday     | Program  № 3                       |
+|    04/01    |     Wednesday     | Program  № 4                       |
 |    04/01    |     Wednesday     | Practicum Proposal                 |
 |    05/15    |     Wednesday     | Practicum Presentation             |
 |    05/15    |     Wednesday     | Practicum Project                  |
@@ -168,8 +167,8 @@ Assignments are due at **`11:59PM`** (midnight) on the date specified below.
 |:------------------------|---------------:|
 | Homeworks               |   15%          |
 | Midterm                 |   25%          |
-| Programs                |   25%          |
-| Practicum Proposal      |    5%          |
+| Programs                |   24%          |
+| Practicum Proposal      |    6%          |
 | Practicum Presentation  |   15%          |
 | Practicum Project       |   15%          |
 
