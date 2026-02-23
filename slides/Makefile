@@ -6,7 +6,7 @@ PDF_FILES := $(MD_FILES:.md=.pdf)
 all: $(PDF_FILES)
 
 %.pdf: %.md
-	pandoc --pdf-engine=xelatex -t beamer $< -o $@
+	pandoc --from=gfm --pdf-engine=xelatex -t beamer $< -o $@
 
 clean:
 	rm -f $(PDF_FILES)
