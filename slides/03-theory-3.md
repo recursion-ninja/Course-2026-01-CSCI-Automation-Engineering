@@ -1,6 +1,7 @@
 ---
 title: Lecture 3
 subtitle: Data Transformations
+date: 2026-02-04
 theme: "Frankfurt"
 colortheme: "beaver"
 fonttheme: "professionalfonts"

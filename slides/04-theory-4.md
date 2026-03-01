@@ -1,6 +1,7 @@
 ---
-title: Lecture 3
+title: Lecture 4
 subtitle: Data Transformations
+date: 2026-02-09
 theme: "Frankfurt"
 colortheme: "beaver"
 fonttheme: "professionalfonts"
@@ -10,6 +11,8 @@ sansfont: DejaVuSans.ttf
 monofont: DejaVuSansMono.ttf
 mathfont: texgyredejavu-math.otf
 header-includes: |
+  \usepackage{tikz}
+  \usetikzlibrary{automata,positioning,arrows.meta}
   \newcommand{\Cons}{%
   \mathrel{::}%
   }
@@ -19,15 +22,6 @@ header-includes: |
   \newcommand{\SetNote}[1]{\ensuremath{\left\{\;#1\;\right\}}\xspace}
   \newcommand{\IndexRange}[2]{\ensuremath{\texttt{{[}\,#1,\ #2\,{]}}}\xspace}
   \newcommand{\NumericRange}[2]{\ensuremath{\left[\,#1,\; #2\,\right]}\xspace}
----
-
----
-title: Finite State Machines for Business Process Automation
-author:
-date:
-header-includes:
-  - \usepackage{tikz}
-  - \usetikzlibrary{automata,positioning,arrows.meta}
 ---
 
 # Motivation: Digital Business Processes

@@ -1,6 +1,7 @@
 ---
 title: Lecture 2
 subtitle: Abstract Constraints
+date: 2026-02-02
 theme: "Frankfurt"
 colortheme: "beaver"
 fonttheme: "professionalfonts"

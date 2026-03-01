@@ -1,6 +1,7 @@
 ---
 title: Lecture 6
 subtitle: Descriptive, Definative Documentation
+date: 2026-02-23
 theme: "Frankfurt"
 colortheme: "beaver"
 fonttheme: "professionalfonts"
