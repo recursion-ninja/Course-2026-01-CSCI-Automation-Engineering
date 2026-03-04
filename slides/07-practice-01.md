@@ -16,36 +16,29 @@ header-includes:
  - \usetikzlibrary{arrows.meta, positioning}
 ---
 
-# Learning Objectives
+---
 
-By the end of this lecture, students will be able to:
+# What is process input?
 
-- Explain how human input devices communicate with computers
-- Describe the operating system input pipeline
-- Explain how software simulates human input
-- Use AutoHotKey to simulate keyboard input
-- Explain hardware keystroke injection attacks
-- Use Selenium to automate web input
-- Understand security and ethical implications
+$$\mathtt{process} \colon \underline{\underline{\mathtt{input}}} \to \mathtt{output}$$
 
 ---
 
-# Lecture Outline
+# How does a human provide process input?
 
-1. Human input device fundamentals
-2. Operating system input pipeline
-3. Software input simulation
-4. Demonstration: AutoHotKey
-5. Demonstration: USB keystroke injection
-6. Demonstration: Selenium automation
-7. Security implications
-8. Ethics and defenses
+Humans sending input to a computer probably looks like one of these.
+
+\includegraphics[height=0.2\paperheight]{INPUT-keyboard.jpg}
+\includegraphics[height=0.2\paperheight]{INPUT-mouse.png}
+\includegraphics[height=0.2\paperheight]{INPUT-touch-screen.jpg}
+\newline
+\includegraphics[height=0.2\paperheight]{INPUT-steering-wheel.jpg}
+\includegraphics[height=0.2\paperheight]{INPUT-joystick.png}
+\includegraphics[height=0.2\paperheight]{INPUT-gamepad.jpeg}
 
 ---
 
-# What is a Human Input Device?
-
-A human input device converts human physical actions into digital signals.
+# Humans use "Human Interface Devices" (HID)
 
 Examples:
 
@@ -63,18 +56,18 @@ Allow humans to control computer systems.
 
 ---
 
-# Input Device Architecture
+# Human Input Device (HID) Architecture
 
 \begin{tikzpicture}[
 node distance=2.5cm,
-every node/.style={draw, rectangle, minimum width=2.5cm, minimum height=1cm}
+every node/.style={draw, rectangle, minimum width=3.0cm, minimum height=1cm,outer sep=0.5cm}
 ]
 
 \node (human) {Human};
-\node (device) [right of=human] {Input Device};
-\node (driver) [right of=device] {Device Driver};
-\node (os) [right of=driver] {Operating System};
-\node (app) [right of=os] {Application};
+\node (device) [below of=human] {Input Device};
+\node (driver) [right=1cm of device] {Device Driver};
+\node (os) [right=1cm of driver] {Operating System};
+\node (app) [below of=os] {Application};
 
 \draw[->] (human) -- (device);
 \draw[->] (device) -- (driver);
@@ -205,12 +198,12 @@ Press CTRL+J → automatic typing occurs.
 
 \begin{tikzpicture}[
 node distance=4cm,
-every node/.style={draw, rectangle, minimum width=3cm, minimum height=1cm}
+every node/.style={draw, rectangle, minimum width=3cm, outer sep=0.5cm, minimum height=1cm}
 ]
 
 \node (script) {AutoHotKey Script};
-\node (os) [right of=script] {Operating System};
-\node (app) [right of=os] {Application};
+\node (os) [below of=script] {Operating System};
+\node (app) [right=2cm of os] {Application};
 
 \draw[->] (script) -- (os);
 \draw[->] (os) -- (app);
@@ -219,162 +212,7 @@ every node/.style={draw, rectangle, minimum width=3cm, minimum height=1cm}
 
 ---
 
-# AutoHotKey Demo Project Structure
-
-```
-autohotkey-demo/
-  demo.ahk
-  Makefile
-```
-
----
-
-# AutoHotKey Makefile
-
-```makefile
-OS := $(shell uname)
-
-install:
-ifeq ($(OS),Linux)
-        sudo apt install autohotkey || sudo dnf install autohotkey
-endif
-ifeq ($(OS),Darwin)
-        brew install --cask autohotkey
-endif
-ifeq ($(OS),Windows_NT)
-        choco install autohotkey
-endif
-
-run:
-        autohotkey demo.ahk || AutoHotkey.exe demo.ahk
-
-clean:
-        rm -f *.log
-```
-
----
-
-# Demonstration Steps
-
-Instructor demonstration:
-
-1. Open text editor
-2. Run AutoHotKey script
-3. Press CTRL+J
-4. Observe automatic typing
-
-Explain: Software injected keyboard events.
-
----
-
-# Hardware Input Simulation
-
-USB devices can impersonate keyboards.
-
-Operating system cannot distinguish:
-
-- Real keyboard
-- Fake keyboard
-
----
-
-# USB Injection Architecture
-
-\begin{tikzpicture}[
-node distance=4cm,
-every node/.style={draw, rectangle, minimum width=3.5cm, minimum height=1cm}
-]
-
-\node (device) {Malicious USB Device};
-\node (os) [right of=device] {Operating System};
-\node (app) [right of=os] {Application};
-
-\draw[->] (device) -- (os);
-\draw[->] (os) -- (app);
-
-\end{tikzpicture}
-
----
-
-# Demonstration 2: USB Keystroke Injection
-
-Arduino Leonardo example:
-
-```c
-#include <Keyboard.h>
-
-void setup()
-{
-    Keyboard.begin();
-
-    delay(2000);
-
-    Keyboard.print("echo Device compromised");
-
-    Keyboard.press(KEY_RETURN);
-    Keyboard.releaseAll();
-
-    Keyboard.end();
-}
-
-void loop()
-{
-}
-```
-
-This executes automatically when plugged in.
-
----
-
-# USB Demo Project Structure
-
-```
-usb-injection-demo/
-  attack.c
-  Makefile
-```
-
----
-
-# USB Demo Makefile
-
-```makefile
-OS := $(shell uname)
-
-install:
-ifeq ($(OS),Linux)
-        sudo apt install arduino-cli
-endif
-ifeq ($(OS),Darwin)
-        brew install arduino-cli
-endif
-ifeq ($(OS),Windows_NT)
-        choco install arduino-cli
-endif
-
-compile:
-        arduino-cli compile --fqbn arduino:avr:leonardo .
-
-upload:
-        arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:leonardo .
-
-clean:
-        rm -rf build
-```
-
----
-
-# Why This Attack Works
-
-USB protocol has no authentication.
-
-Operating system trusts all keyboards.
-
-This is a fundamental security limitation.
-
----
-
-# Demonstration 3: Selenium Automation
+# Demonstration 2: Selenium Automation
 
 Selenium automates web browsers.
 
@@ -412,13 +250,11 @@ from selenium.webdriver.common.by import By
 import time
 
 driver = webdriver.Firefox()
-
 driver.get("https://example.com")
 
 time.sleep(2)
 
 body = driver.find_element(By.TAG_NAME, "body")
-
 body.send_keys("Hello from Selenium automation!")
 
 time.sleep(5)
@@ -428,45 +264,67 @@ driver.quit()
 
 ---
 
-# Selenium Demo Project Structure
+# Hardware Input Simulation
 
-```
-selenium-demo/
-  demo.py
-  Makefile
-```
+USB devices can impersonate keyboards.
 
----
+Operating system cannot distinguish:
 
-# Selenium Makefile
-
-```makefile
-OS := $(shell uname)
-
-install:
-ifeq ($(OS),Linux)
-        sudo apt install python3 python3-pip firefox-geckodriver
-endif
-ifeq ($(OS),Darwin)
-        brew install python geckodriver firefox
-endif
-ifeq ($(OS),Windows_NT)
-        pip install selenium webdriver-manager
-endif
-
-pip-install:
-        pip install selenium
-
-run:
-        python3 demo.py
-
-clean:
-        rm -rf __pycache__
-```
+- Real keyboard
+- Fake keyboard
 
 ---
 
-# Legitimate Uses
+# USB Injection Architecture
+
+\begin{tikzpicture}[
+node distance=4cm,
+every node/.style={draw, rectangle, minimum width=3.5cm, minimum height=1cm}
+]
+
+\node (device) {Malicious USB Device};
+\node (os) [below of=device] {Operating System};
+\node (app) [right=2cm of os] {Application};
+
+\draw[->] (device) -- (os);
+\draw[->] (os) -- (app);
+
+\end{tikzpicture}
+
+---
+
+# Demonstration 3: USB Keystroke Injection
+
+Arduino Leonardo example:
+
+```c
+#include <Keyboard.h>
+
+void setup() {
+    Keyboard.begin();
+    delay(2000);
+    Keyboard.print("echo Device compromised");
+    Keyboard.press(KEY_RETURN);
+    Keyboard.releaseAll();
+    Keyboard.end();
+}
+```
+
+This executes automatically when plugged in.
+
+---
+
+# Why This Attack Works
+
+USB protocol has no authentication.
+
+Operating system trusts all keyboards implicitly.
+
+This is a fundamental security limitation.
+
+---
+
+# HID Legitimate Uses
 
 Input simulation enables:
 
@@ -488,35 +346,15 @@ Input simulation can enable:
 - Unauthorized commands
 - Privilege escalation
 
-Example tools:
-
-- USB Rubber Ducky
-- BadUSB
-
----
-
-# Security Defenses
-
-Software defenses:
-
-- Endpoint protection
-- Behavior monitoring
-
-Hardware defenses:
-
-- USB device control
-- Physical security
-
-Policy defenses:
-
-- User education
-- Device restrictions
-
 ---
 
 # Ethical Considerations
 
 Automation tools are powerful.
+
+- We can remove humans from _productive_ processes!
+
+- We can remove humans from _destructive_ processes...
 
 Use responsibly.
 
@@ -526,7 +364,7 @@ Never perform unauthorized attacks.
 
 ---
 
-# Key Takeaways
+# Summary
 
 Human input devices generate events.
 
@@ -534,9 +372,7 @@ Operating systems abstract input events.
 
 Software and hardware can simulate input.
 
-Simulation enables automation and attacks.
-
-Security awareness is essential.
+Simulation enables automation, both for good and ill.
 
 ---
 
