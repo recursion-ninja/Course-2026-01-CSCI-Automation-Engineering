@@ -1,0 +1,119 @@
+\documentclass{ProgramLabCUNY}
+\usepackage{bussproofs} \EnableBpAbbreviations
+\usepackage{mathrsfs}
+\usepackage{stix}
+\usepackage{pgffor}
+\usepackage{booktabs}
+\usepackage{nicematrix}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+    pdftitle={Online (local) Olympics},
+    }
+
+\renewcommand{\arraystretch}{1.2}
+
+\usepackage{tabstackengine}
+\TABstackMath
+\TABbinary
+
+\AssignmentNumber{1}%
+\CourseName{Automation Engineering}
+\CourseNumber{39531}
+\InstructorName{Alex Washburn}
+\DueDateYear{2026}
+\DueDateMonth{03}
+\DueDateDay{11}
+
+%\newenvironment{\ContactListing}[args]{begdef}{enddef}
+
+\newcommand{\ProofLabelOne}[1]{\RightLabel{\ensuremath{\Parens{\mathrm{\textsc{#1}}}}\xspace}}
+\newcommand{\ProofLabelTwo}[2]{\RightLabel{\ensuremath{\Parens{\mathrm{\textsc{#1}}}\Parens{\mathrm{#2}}}\xspace}}
+
+\newcommand{\LogicCase}[1]{\item \textbf{Case}~#1:\newline}
+
+\newcommand{\DerivationFormat}[2]{\hfill\qquad#2\textsc{#1}}
+\newcommand{\Derivation}[2]{\DerivationFormat{#1}{#2~\ensuremath{\ruledelayed}~}}
+
+\newcommand{\AxiomCL}[1]{\DerivationFormat{Axiom~#1}{}}
+\newcommand{\Factivity}{\DerivationFormat{Factivity}{}}
+\newcommand{\Given}{\DerivationFormat{Hypothesis}{}}
+\newcommand{\Contrapositive}{\DerivationFormat{Contrapositive}{}}
+\newcommand{\DoubleNegation}{\DerivationFormat{Double Negation}{}}
+\newcommand{\DeMorgans}{\DerivationFormat{DeMorgans}{}}
+\newcommand{\Necitation}[1]{\Derivation{Necitation}{#1}}
+\newcommand{\Distribution}[1]{\Derivation{Distribution}{#1}}
+\newcommand{\Reflexivity}[1]{\Derivation{Reflexivity}{#1}}
+\newcommand{\ConDef}[1]{\Derivation{Connective Definition}{#1}}
+\newcommand{\Contradiction}[1]{\ensuremath{\neg \phi \land \phi}\Derivation{Contradiction}{\ensuremath{\phi = #1}}}
+\newcommand{\DedThm}[1]{\Derivation{Deduction Theorem}{#1}}
+\newcommand{\ModPon}[2]{\Derivation{Modus Ponens}{#1, #2}}
+\newcommand{\Syllogism}[2]{\Derivation{Syllogism}{#1, #2}}
+\newcommand{\Theorem}[2]{\DerivationFormat{Theorem~--~Lecture~#1,~Page~#2}{}}
+
+\newcommand{\R}[2]{\ensuremath{\World{#1}\mathrel{R}\World{#2}}\xspace}
+\newcommand{\Tr}[2]{\ensuremath{\tau\Parens{#1,\,#2}\xspace}}
+\newcommand{\T}[1]{\ensuremath{\tau\Parens{#1}\xspace}}
+\newcommand{\Prob}[1]{\ensuremath{P\Parens{#1}}\xspace}
+\newcommand{\RandVar}[1]{\ensuremath{\mathbf{#1}}\xspace}
+\newcommand{\DistMap}[2]{~#1&\mapsto~~#2\\}
+\newcommand{\DistCondition}[2]{~#1&\text{\normalfont iff}~~#2\\}
+
+
+\newcommand{\Heads}{\ensuremath{\mathtt{H}}\xspace}
+\newcommand{\Tails}{\ensuremath{\mathtt{T}}\xspace}
+
+
+\newcommand{\One}{\ensuremath{\textbf{1}}\xspace}
+
+\newcommand{\Door}[1]{\ensuremath{\mathbf{D}_{#1}}\xspace}
+\newcommand{\Car}[1]{\ensuremath{\mathscr{C}}\xspace}
+\newcommand{\Goat}[1]{\ensuremath{\mathscr{G}}\xspace}
+
+
+
+\newcommand{\Countermodel}[4]{%
+\textbf{Countermodel} $\mathcal{K}$ in #1:%
+\begin{itemize}%
+\item \ensuremath{W = \SetNote{\World{0}%
+\foreach \n in {1,...,#2}{,~\World{\n}}%
+}}%
+\item \ensuremath{\mathrel{R}~=~#3}%
+\item #4%
+\end{itemize}%
+}
+
+\begin{document}
+\CoverPage%
+
+\setstretch{1.2}
+
+\Practicum{Inhuman Action in the Internet Age}{%
+The \Parens{local} Olympic committee has made an online speed shooting simulation in order for contenders to practice for the upcoming Olympic sporting event.
+Additionally, the person achieving the highest score in the simulator will qualify for the \Parens{local} Olympics online speed shooting competition, and due to an esoteric rule loophole, who ever is the qualifying person this year will win the gold medal by default.\\[5mm]%
+{\hspace*{2cm}\href{recursion.ninja/target-practice}{https://recursion.ninja/target-practice}}\\[5mm]%
+Reed Coil is a very boastful gamer and claims that no one can beat them at online speed shooting.
+They assert that the best anyone can ever achieve on the simulation is a score of $500$, which coincidentally happens to be Reed's top score.\\[5mm]%
+Most people agree that it would be unfortunate for someone as boastful as Reed Coil to win the gold medal in online speed shooting.
+Such an outcome would reflect poorly on the community and dimminish its reputation.
+Fortunately for the community, if any person can achieve a higher score than Reed's top score, they will unseat Reed from their Olympic qualification and take the qualifying seat for themselves.\\[5mm]%
+\textit{Who amongst the CSCI 39531 class will out score Reed Coil; saving the comunity's reputation and taking the gold?}%
+}
+%
+\Practicum{Instructions}{%
+Complete the \texttt{aimbot-gold.py} script in order to automate playing the online speed shooting simulation.
+In this programming assignment we will learn the basics of automation through simulation a Human Input Device (HID).
+The tool we will be using to simulate a HID is the Selenium framework.
+Selenium works by creating a new browser window controled my the ``automation driver.''
+Within this browser window, there are many commands for locating, inspecting, and interacting with elents of the web browser's Document Object Model (DOM).
+This automation task will require very basic usage of the mouse manipulation features provided by Selenium.\\[5mm]%
+Complete the \textit{three tasks} within the provided \texttt{aimbot-gold.py} script.\\[5mm]%
+Success is achieve once your completed \texttt{aimbot-gold.py} can \textit{reliably} achieve a score greater than $500$.%
+}
+
+\Problem{If you would like, take a screenshot of your best score and past it below.\\\textit{(not required)}}
+
+\end{document}
