@@ -479,19 +479,16 @@ __Solutions:__
 
 # Summary
 
-Subscription monitoring allows automation systems to react to **external events**.
+Subscription monitoring and processing enables automation systems to respond to, and initiate, **external events**.
 
-Technologies covered:
+| Technology | Theoretical Type Signature |
+|:----|:------|
+| RSS feed monitoring | $\mathtt{process} \colon \underline{\mathtt{RSS\_feed}}          \;\to \mathtt{output}$ |
+| email reception     | $\mathtt{process} \colon \underline{\mathtt{email}}\phantom{000}   \to \mathtt{output}$ |
+| email sending       | $\mathtt{process} \colon \mathtt{input}\phantom{000} \to \underline{\mathtt{email}}$  |
+| SMS reception       | $\mathtt{process} \colon \underline{\mathtt{SMS\_text}}          \;\to \mathtt{output}$ |
+| SMS sending         | $\mathtt{process} \colon \mathtt{input}\phantom{000} \to \underline{\mathtt{SMS\_text}}$ |
 
-- RSS feed monitoring
-- email reception
-- email sending
-- SMS reception
-- SMS sending
-
-These mechanisms form the **input/output interfaces** of many automated workflows.
-
-$$\mathtt{process} \colon \underline{\underline{\mathtt{input}}} \to \mathtt{output}$$
 
 ---
 
