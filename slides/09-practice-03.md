@@ -1,7 +1,7 @@
 ---
 title: Lecture 09
 subtitle: Subscription Monitoring and Processing
-date: 2026-03-04
+date: 2026-03-09
 theme: "Frankfurt"
 colortheme: "beaver"
 fonttheme: "professionalfonts"
