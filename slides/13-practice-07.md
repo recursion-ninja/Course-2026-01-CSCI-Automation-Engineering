@@ -303,35 +303,11 @@ for route in wordlist:
 
 ---
 
-# Industry Tools: Fuzzing Frameworks
-
-## Security-Focused
-
-- Burp Intruder
-- OWASP ZAP Fuzzer
-- wfuzz
-
 ## Developer-Focused
 
 - RESTler (Microsoft)
 - Postman Collection Runner
 - Newman (CLI for Postman)
-
----
-
-# Industry Tools: API Testing
-
-## Structured Testing Tools
-
-- Postman
-- Insomnia
-- SoapUI
-
-## Automation Features
-
-- Test scripts
-- Parameter iteration
-- Environment configs
 
 ---
 
@@ -355,27 +331,7 @@ ffuf -u https://example.com/FUZZ -w wordlist.txt
 wfuzz -c -z file,wordlist.txt https://example.com/FUZZ
 ```
 
----
-
-# Example: RESTler
-
-## Concept
-
-- Learns API structure from OpenAPI spec
-- Generates test cases automatically
-
----
-
-# Automation Architecture
-
-## Components
-
-- Input generator
-- Request engine
-- Analyzer
-- Storage
-
----
+--
 
 # Advanced Techniques
 
@@ -383,10 +339,6 @@ wfuzz -c -z file,wordlist.txt https://example.com/FUZZ
 
 - Maintain session state
 - Sequence of requests
-
----
-
-# Advanced Techniques
 
 ## Grammar-Based Fuzzing
 
@@ -459,16 +411,6 @@ wfuzz -c -z file,wordlist.txt https://example.com/FUZZ
 - API probing uncovers behavior
 - Fuzzing enables deep exploration
 - Tools accelerate and scale the process
-
----
-
-# Discussion
-
-## Questions
-
-- How do we prioritize which routes to explore?
-- What signals indicate a "useful" endpoint?
-- How can automation avoid detection?
 
 ---
 
