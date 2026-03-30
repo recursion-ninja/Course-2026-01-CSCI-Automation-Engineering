@@ -1,0 +1,165 @@
+\documentclass{ProblemSetCUNY}
+\usepackage{bussproofs} \EnableBpAbbreviations
+\usepackage{mathrsfs}
+\usepackage{stix}
+\usepackage{pgffor}
+\usepackage{listings}
+
+\usepackage{tabstackengine}
+\TABstackMath
+\TABbinary
+
+\AssignmentNumber{2}%
+\CourseName{Automation Engineering}
+\CourseNumber{39531}
+\InstructorName{Alex Washburn}
+\DueDateYear{2026}
+\DueDateMonth{02}
+\DueDateDay{11}
+
+
+%\newenvironment{\ContactListing}[args]{begdef}{enddef}
+
+\newcommand{\Bool}{\ensuremath{\mathtt{Bool}}\xspace}
+%\newcommand{\Nats}{\ensuremath{\mathbb{N}}\xspace}
+%\newcommand{\Ints}{\ensuremath{\mathbb{Z}}\xspace}
+%\newcommand{\Rats}{\ensuremath{\mathbb{Q}}\xspace}
+%\newcommand{\Reals}{\ensuremath{\mathbb{R}}\xspace}
+%\newcommand{\ProofLabelOne}[1]{\RightLabel{\ensuremath{\Parens{\mathrm{\textsc{#1}}}}\xspace}}
+\newcommand{\ProofLabelTwo}[2]{\RightLabel{\ensuremath{\Parens{\mathrm{\textsc{#1}}}\Parens{\mathrm{#2}}}\xspace}}
+
+\newcommand{\LogicCase}[1]{\item \textbf{Case}~#1:\newline}
+
+\newcommand{\DerivationFormat}[2]{\hfill\qquad#2\textsc{#1}}
+\newcommand{\Derivation}[2]{\DerivationFormat{#1}{#2~\ensuremath{\ruledelayed}~}}
+
+\newcommand{\AxiomCL}[1]{\DerivationFormat{Axiom~#1}{}}
+\newcommand{\Factivity}{\DerivationFormat{Factivity}{}}
+\newcommand{\Given}{\DerivationFormat{Hypothesis}{}}
+\newcommand{\Contrapositive}{\DerivationFormat{Contrapositive}{}}
+\newcommand{\DoubleNegation}{\DerivationFormat{Double Negation}{}}
+\newcommand{\DeMorgans}{\DerivationFormat{DeMorgans}{}}
+\newcommand{\Necitation}[1]{\Derivation{Necitation}{#1}}
+\newcommand{\Distribution}[1]{\Derivation{Distribution}{#1}}
+\newcommand{\Reflexivity}[1]{\Derivation{Reflexivity}{#1}}
+\newcommand{\ConDef}[1]{\Derivation{Connective Definition}{#1}}
+\newcommand{\Contradiction}[1]{\ensuremath{\neg \phi \land \phi}\Derivation{Contradiction}{\ensuremath{\phi = #1}}}
+\newcommand{\DedThm}[1]{\Derivation{Deduction Theorem}{#1}}
+\newcommand{\ModPon}[2]{\Derivation{Modus Ponens}{#1, #2}}
+\newcommand{\Syllogism}[2]{\Derivation{Syllogism}{#1, #2}}
+\newcommand{\Theorem}[2]{\DerivationFormat{Theorem~--~Lecture~#1,~Page~#2}{}}
+
+\newcommand{\R}[2]{\ensuremath{\World{#1}\mathrel{R}\World{#2}}\xspace}
+\newcommand{\Tr}[2]{\ensuremath{\tau\Parens{#1,\,#2}\xspace}}
+\newcommand{\T}[1]{\ensuremath{\tau\Parens{#1}\xspace}}
+\newcommand{\Prob}[1]{\ensuremath{P\Parens{#1}}\xspace}
+\newcommand{\ProbGiven}[2]{\ensuremath{P\Parens{#1~\,|\,~#2}}\xspace}
+\newcommand{\RandVar}[1]{\ensuremath{\mathbf{#1}}\xspace}
+\newcommand{\DistMap}[2]{~#1&\mapsto~~#2\\}
+\newcommand{\DistCondition}[2]{~#1&\text{\normalfont iff}~~#2\\}
+
+
+\newcommand{\One}{\ensuremath{\textbf{1}}\xspace}
+
+\newcommand{\Cons}{%
+\mathrel{:\!:}%
+}
+
+\newcommand{\ProblemItem}[1]{%
+\hspace{\parindent}\textbullet\;\;#1%
+}
+
+\begin{document}
+\CoverPage%
+
+
+%
+% Mapping
+% Configuration updates
+% Folding
+%
+
+
+\Problem{%
+Kara Vann has signal processing function that they need to write.
+They tried writing one big loop, but it got too complicated and Kara Vann got stuck with defective code.
+Kara Vann describes the signal processing function to you and asks for your help.
+They need to eventually produce the following function:
+$$\mathtt{makeSignal} \colon \mathtt{Stream}\;\,\Ints \to \mathtt{Stream}\;\,\Bool$$
+}%
+%
+\SubProblem{Write a function which ensures that the value is in the range. $\NumericRange{-10}{10}$.\newline%
+The function should have the type signature: $\mathtt{clamp} \colon \Ints \to \Ints$}
+\vfill
+\SubProblem{Write a function which divides an even number by 2, subtracts 1 from a negative odd number, and adds 1 to a positive odd number.\newline%
+The function should have the type signature: $\mathtt{perturb} \colon \Ints \to \Ints$}
+\vfill
+\SubProblem{Write a function which outputs the minimum distance from the input to either -5 or 5.\newline%
+The function should have the type signature: $\mathtt{measure} \colon \Ints \to \Nats$}
+\vfill
+\SubProblem{Kara Vann says that $\mathtt{makeSignal}$ should do the following, in order:\newline%
+\ProblemItem{$\mathtt{clamp}$ the stream values}\newline%
+\ProblemItem{then $\mathtt{perturb}$ the values}\newline%
+\ProblemItem{then \emph{add 1} to the values}\newline%
+\ProblemItem{then $\mathtt{perturb}$ the values}\newline%
+\ProblemItem{then $\mathtt{measure}$ the values}\newline%
+\ProblemItem{then $\mathtt{perturb}$ the values}\newline%
+\ProblemItem{then \emph{halve} the values}\newline%
+\ProblemItem{finally, output if the value is even}\newline%
+Write the function $\mathtt{makeSignal}$ by composing together the functions above and anonymous functions.}
+\vfill
+
+\Problem{%
+Nora Mally has defined a user configuration data-type:\\%
+\begin{equation*}
+\mathtt{Config}\; \Coloneq \begin{cases}
+\mathtt{DefaultInfo}\\
+\mathtt{UserDefined}\\
+\quad\;\Tuple{\mathtt{darkmode} \colon \Bool,\, \mathtt{columnWidth} \colon \Nats,\, \mathtt{fontScaling} \colon \Rats }
+\end{cases}
+\end{equation*}\\[5mm]
+Nora Mally wants to always initialize their application with the $\mathtt{DefaultInfo}$ for all users.
+Then whenever a user changes one of the labeled fields of their configuration, the $\mathtt{Config}$ is updated.
+Instead of writing a boring ``setter'' method for each field of $\mathtt{Config}$, Nora Mally wants to use abstractions to simplify their code.
+They figure if they add or remove fields later, they will have a simpler time maintaining the code.\\[5mm]%
+\textit{Help Nora Mally write methods so that $\mathtt{Config}$ satisfies the constraint classes below.}
+}
+
+\SubProblem{Define a $\mathtt{Semigroup}$ instance for $\mathtt{Config}$.\newline%
+\ProblemItem{Write a function $\oplus \colon \mathtt{Config} \to \mathtt{Config} \to \mathtt{Config}$.}\newline%
+\ProblemItem{Show that your $\oplus$ function satisfies associativity.}%
+}
+\vfill
+
+\SubProblem{Define a $\mathtt{Monoid}$ instance for $\mathtt{Config}$.\newline%
+\ProblemItem{Define a value $\mathtt{zed} \colon \mathtt{Config}$.}\newline%
+\ProblemItem{Show that your $\mathtt{zed}$ value is an identity element for your $\oplus$ function.%
+}}
+\vfill
+
+
+\Problem{%
+Ed Vance is planning to transform some data.
+They want to write some \emph{generic} analysis functions over $\mathtt{Folable}$ structures.
+Sometimes an empty structure cannot return a result that Ed Vance wants from the generic function, so they defined the following data-type to represent ``missingness'' or ``existence'':\\%
+\begin{equation*}
+\mathtt{Optional}\;\alpha \Coloneq \begin{cases}
+\mathtt{None}\\
+\mathtt{Some}\;\alpha
+\end{cases}
+\end{equation*}\\[5mm]
+\textit{Help Ed Vance write their desired functions below by using $$\Parens{\mathtt{Foldable}\; t } \Rightarrow \mathtt{fold} \colon \Parens{\alpha \to \beta \to \beta} \to \beta \to t\;\alpha \to \beta$$}
+}
+\SubProblem{$\Parens{\mathtt{Foldable}\; t } \Rightarrow \mathtt{length} \colon t\;\alpha \to \Nats$}
+\vfill
+\SubProblem{$\Parens{\mathtt{Foldable}\; t,\, \mathtt{Equatable}\; \alpha } \Rightarrow \mathtt{contains} \colon t\;\alpha \to \alpha \to \Bool$}
+\vfill
+\SubProblem{$\Parens{\mathtt{Foldable}\; t,\, \mathtt{Orderable}\; \alpha } \Rightarrow \mathtt{maximum} \colon t\;\alpha \to \mathtt{Optional}\;\alpha$}
+\vfill
+\SubProblem{$\Parens{\mathtt{Foldable}\; t } \Rightarrow \mathtt{first} \colon t\;\alpha \to \mathtt{Optional}\;\alpha$}
+\vfill
+\SubProblem{$\Parens{\mathtt{Foldable}\; t } \Rightarrow \mathtt{last} \colon t\;\alpha \to \mathtt{Optional}\;\alpha$}
+\vfill
+
+
+\end{document}
