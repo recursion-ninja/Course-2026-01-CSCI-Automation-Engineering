@@ -14,7 +14,7 @@
 | Automation Features  | 20 |  |
 | Code Review ‡        |  5 |  |
 | Presentation Points  | 50 |  |
-| Final Grade Weight   | 25 |  |
+| Final Grade Weight   | 30 |  |
 
 **Reminder:** The sylabus describes the Practicum Presentation grading as follows:
 
