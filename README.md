@@ -136,9 +136,9 @@ The practicum should demonstrate the application of the process automation topic
 |    03/30    |     -----      | Processes (Bots)  | |
 |    -----    |     -----      |                             | |
 |    04/13    |     04/15      | Practicum Presentations № 1 | Daemonization |
-|    04/20    |     04/22      | Practicum Presentations № 2 | Debugging & Logging |
-|    04/27    |     04/29      | Practicum Presentations № 3 | Documentation |
-|    05/04    |     05/06      | Practicum Presentations № 4 | Designing Workflows |
+|    04/20    |     04/22      | Debugging & Logging         | Documentation |
+|    04/27    |     04/29      | Designing Workflows         | Practicum Presentations № 2 |
+|    05/04    |     05/06      | Practicum Presentations № 3 | Practicum Presentations № 4 |
 |    05/11    |     05/13      | Practicum Presentations № 5 | Practicum Presentations № 6 |
 
 
