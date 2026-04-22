@@ -782,7 +782,7 @@ def worker(pending, dead_letters):
         request = pending.get()
         if request is not None:
             try
-                category = classify(reuqest)
+                category = classify(request)
                 respond(request)
             except Exception as e:
                 dead_letters.add(request)

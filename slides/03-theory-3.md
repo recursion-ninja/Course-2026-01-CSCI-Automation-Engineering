@@ -30,7 +30,7 @@ $$\mathtt{transform} \colon \mathtt{input} \rightarrow \mathtt{output}$$
 
 # Data Transformation Goal
 
-$$\mathtt{perfection} \colon \mathtt{messy\_garbage} \rightarrow \mathtt{prefectly\_formatted}$$
+$$\mathtt{perfection} \colon \mathtt{messy\_garbage} \rightarrow \mathtt{perfectly\_formatted}$$
 
 
 ---
@@ -112,7 +112,7 @@ class Foldable t where
     foldMap : Monoid m => (α → m) → t α → m
 ```
 
-- Mapping Correspondance
+- Mapping Correspondence
   $$\mathtt{foldMap}\;f \equiv \mathtt{fold} \Parens{\lambda x\;\;\mathtt{acc} \rightarrow x \oplus \mathtt{acc}} \mathtt{zed} \circ \mathtt{fmap}\;f$$
 
 
@@ -144,7 +144,7 @@ $$\mathtt{updates} \colon \mathtt{Foldable}\; t \Rightarrow t\; \mathtt{Transact
 ```
 step : Transaction → BalanceChanges → BalanceChanges
 step(x, balances) =
-  Map.insertWith (+) (user x) (ammount x) balances
+  Map.insertWith (+) (user x) (amount x) balances
 
 updates : List Transaction → BalanceChanges → BalanceChanges
 updates = fold step Map.empty

@@ -279,7 +279,7 @@ Fixed sleep:
 # Running Example
 
 ```python
-# Returns miliseconds to sleep
+# Returns milliseconds to sleep
 def compute_quanta(remaining):
     return min(30*60*1000, remaining / 2)
 ```
@@ -456,7 +456,7 @@ Close:
 - Updates
 - Background tasks
 
-Running on a dedicated device with minimal other processes is ideal. Comsider a Raspbery Pi or other networked micro computer.
+Running on a dedicated device with minimal other processes is ideal. Comsider a Raspberry Pi or other networked micro computer.
 
 ---
 
